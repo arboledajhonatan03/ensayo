@@ -1,10 +1,12 @@
 package model;
+import java.util.ArrayList;
 public class ClinicalHistory{
 	private static final String STATE_OPEN = "abierto";
 	private static final String STATE_CLOSE = "cerrado";
 	private String symptom;
 	private String diagnostic;
 	private boolean state;
+	private ArrayList<Medicament> medicaments;
 	private HistorialDate Date;
 	private HistorialDate Date2;
 	public ClinicalHistory (String symptom, String diagnostic, boolean state, HistorialDate Date, HistorialDate Date2){
@@ -13,6 +15,7 @@ public class ClinicalHistory{
 		this.state = state;
 		this.Date = Date;
 		this.Date2 = Date2;
+		medicaments = new ArrayList<>();
 	}
 	public String getSymptom(){
 		return symptom;
