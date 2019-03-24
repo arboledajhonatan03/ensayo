@@ -7,15 +7,15 @@ public class ClinicalHistory{
 	private String diagnostic;
 	private boolean state;
 	private ArrayList<Medicament> medicaments;
-	private HistorialDate Date;
-	private HistorialDate Date2;
-	public ClinicalHistory (String symptom, String diagnostic, boolean state, HistorialDate Date, HistorialDate Date2){
+	private HistorialDate date;
+	private HistorialDate dateExit;
+	public ClinicalHistory (String symptom, String diagnostic, boolean state, HistorialDate date, HistorialDate dateExit){
 		this.symptom = symptom;
 		this.diagnostic = diagnostic;
 		this.state = state;
-		this.Date = Date;
-		this.Date2 = Date2;
-		medicaments = new ArrayList<>();
+		this.date = date;
+		this.dateExit = dateExit;
+		medicaments = new ArrayList<Medicament>();
 	}
 	public String getSymptom(){
 		return symptom;
@@ -36,20 +36,29 @@ public class ClinicalHistory{
 		this.state = state;
 	}
 	public HistorialDate getDate(){
-		return Date;
+		return date;
 	}
-	public void setDate (HistorialDate Date){
-		this.Date = Date;
+	public void setDate (HistorialDate date){
+		this.date = date;
 	}
-	public HistorialDate getDate2(){
-		return Date2;
+	public HistorialDate getDateExit(){
+		return dateExit;
 	}
-	public void setDate2 (HistorialDate Date2){
-		this.Date2 = Date2;
+	public void setDateExit (HistorialDate dateExit){
+		this.dateExit = dateExit;
 	}
-	public String showSymptom(String symptom){
-		String msg = "";
-		
-		return msg;
+	public void addMedicine(Medicament medicine){
+        medicaments.add(medicine);
+    }
+	public int frecuencyMedicament(int actualDay, int actualMonth, int actualYear){
+		int exactedDays = date.frecuencyOfMedicament(actualDay, actualMonth, actualYear);
+		return exactedDays;
+	}
+	public double doseMedicamentCost(){
+		double doseXcost = 0.0;
+		for(int j = 0; j <  medicaments.size(); j++){
+			doseXcost = medicaments.get(j).calculatedDose();
+		}
+		return doseXcost;
 	}
 }

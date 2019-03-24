@@ -1,20 +1,23 @@
 package model;
+import java.util.ArrayList;
 public class Pet{
-	private static final String DOG = "perro";
-	private static final String CAT = "gato";
-	private static final String BIRD = "ave";
-	private static final String OTHER = "otro";
+	private static final String DOG = "dog";
+	private static final String CAT = "cat";
+	private static final String BIRD = "bird";
+	private static final String OTHER = "other";
 	private String namePet;
 	private double weightPet;
 	private String typeOfPet;
 	private int ageOfPet;
-	private HistorialRecord histo; 
-	public Pet (String namePet, double weightPet, String typeOfPet, int ageOfPet, HistorialRecord histo){
+	private String owner;
+	private ClinicalHistory history;
+	public Pet (String namePet, double weightPet, String typeOfPet, int ageOfPet, String owner, ClinicalHistory history){
 		this.namePet = namePet;
 		this.weightPet = weightPet;
 		this.typeOfPet = typeOfPet;
 		this.ageOfPet = ageOfPet;
-		this.histo = histo;
+		this.owner = owner;
+		this.history = history;
 	}
 	public String getNamePet(){
 		return namePet;
@@ -40,11 +43,74 @@ public class Pet{
 	public void setAgeOfPet (int ageOfPet){
 		this.ageOfPet = ageOfPet;
 	}
-	public HistorialRecord getHisto(){
-		return histo;
+	public String getOwner(){
+		return owner;
 	}
-	public void setHisto (HistorialRecord histo){
-		this.histo = histo;
+	public void setOwner(String owner){
+		this.owner = owner;
 	}
-	
+	public ClinicalHistory getHistory(){
+		return history;
+	}
+	public void setHistory(ClinicalHistory history){
+		this.history = history;
+	}
+	public double hospitalizateValor(int actualDay, int actualMonth, int actualYear){
+		double total = 0.0;
+		int exactedDays = history.frecuencyMedicament(actualDay, actualMonth, actualYear);
+		double doseXcost = history.doseMedicamentCost();
+		if(typeOfPet.equals(CAT)){
+			if(weightPet >= 1.0 && 3.0 <= weightPet){
+				total += (double) (exactedDays * 10000)+ doseXcost;
+			}else if(weightPet >= 3.1 && 10.0 <= weightPet){
+				total += (double) (exactedDays* 12000)+ doseXcost;
+			}else if(weightPet >= 10.1 && 20.0 <= weightPet){
+				total += (double) (exactedDays * 15000)+ doseXcost;
+			}else if(weightPet > 20.0 ){
+			 total +=(double) (exactedDays * 20000)+ doseXcost;
+			}
+		}
+		else if(typeOfPet.equals(DOG)){
+			if(weightPet >= 1.0 && 3.0 <= weightPet){
+				total += (double) (exactedDays * 15000)+ doseXcost;
+			}else if(weightPet >= 3.1 && 10.0 <= weightPet){
+				total += (double) (exactedDays* 17000)+ doseXcost;
+			}else if(weightPet >= 10.1 && 20.0 <= weightPet){
+				total += (double) (exactedDays * 20000)+ doseXcost;
+			}else if(weightPet > 20.0 ){
+			 total +=(double) (exactedDays * 25000)+ doseXcost;
+			}
+		}
+		else if(typeOfPet.equals(BIRD)){
+			if(weightPet >= 1.0 && 3.0 <= weightPet){
+				total += (double) (exactedDays * 10000)+ doseXcost;
+			}else if(weightPet >= 3.1 && 10.0 <= weightPet){
+				total += (double) (exactedDays* 12000)+ doseXcost;
+			}else if(weightPet >= 10.1 && 20.0 <= weightPet){
+				total += (double) (exactedDays * 20000)+ doseXcost;
+			}else if(weightPet > 20.0 ){
+			 total +=(double) (exactedDays * 25000)+ doseXcost;
+			}
+		}
+		else if(typeOfPet.equals(OTHER)){
+			if(weightPet >= 1.0 && 3.0 <= weightPet){
+				total += (double) (exactedDays * 10000)+ doseXcost;
+			}else if(weightPet >= 3.1 && 10.0 <= weightPet){
+				total += (double) (exactedDays* 17000)+ doseXcost;
+			}else if(weightPet >= 10.1 && 20.0 <= weightPet){
+				total += (double) (exactedDays * 30000)+ doseXcost;
+			}else if(weightPet > 20.0 ){
+			 total +=(double) (exactedDays * 30000)+ doseXcost;
+			}
+		}
+		return total;
+	}
+	public String showInfoPet(){
+	String msj = "";
+	msj += "Name: " + namePet + "\n";
+	msj += "Age: " + ageOfPet + "\n";
+	msj += "Weight: " + weightPet + "\n";
+	msj += "Type of animal: " + typeOfPet + "\n";
+	return msj;
+	}
 }

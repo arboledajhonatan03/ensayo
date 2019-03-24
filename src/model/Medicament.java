@@ -3,8 +3,8 @@ public class Medicament {
 	private String name;
 	private double dose;
 	private double doseCost;
-	private char frecuency;
-	public Medicament (String name, double dose, double doseCost, char frecuency){
+	private double frecuency;
+	public Medicament (String name, double dose, double doseCost, double frecuency){
 		this.name = name;
 		this.dose = dose;
 		this.doseCost = doseCost;
@@ -28,10 +28,16 @@ public class Medicament {
 	public void setDoseCost(double doseCost){
 		this.doseCost = doseCost;
 	}
-	public char getFrecuency(){
+	public double getFrecuency(){
 		return frecuency;
 	}
-	public void setFrecuency(char frecuency){
+	public void setFrecuency(double frecuency){
 		this.frecuency = frecuency;
+	}
+	public double calculatedDose(){
+		double doseXcost = 0.0;
+		doseXcost += dose*doseCost;
+
+		return doseXcost;
 	}
 }

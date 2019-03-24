@@ -26,4 +26,18 @@ public class HistorialDate {
 	public void setYear(int year){
 		this.year = year;
 	}
+	public int frecuencyOfMedicament(int actualDay , int actualMonth, int actualYear){
+
+		int day1 = 0;
+		int actualDay1 = 0;
+		int passedDays = 0;
+		int exactedDays = 0;
+
+		day1 += (actualMonth - month)*30;
+		actualDay1 += (actualDay - day);
+		passedDays += (actualYear - year)*360;
+		exactedDays += (day1 + actualDay1 + passedDays);
+
+		return exactedDays;
+	}
 }
