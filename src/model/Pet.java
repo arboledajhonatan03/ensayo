@@ -61,46 +61,46 @@ public class Pet{
 		double doseXcost = history.doseMedicamentCost();
 		if(typeOfPet.equals(CAT)){
 			if(weightPet >= 1.0 && 3.0 <= weightPet){
-				total += (double) (exactedDays * 10000)+ doseXcost;
+				total = (exactedDays * 10000)+ doseXcost;
 			}else if(weightPet >= 3.1 && 10.0 <= weightPet){
-				total += (double) (exactedDays* 12000)+ doseXcost;
+				total = (exactedDays* 12000)+ doseXcost;
 			}else if(weightPet >= 10.1 && 20.0 <= weightPet){
-				total += (double) (exactedDays * 15000)+ doseXcost;
+				total = (exactedDays * 15000)+ doseXcost;
 			}else if(weightPet > 20.0 ){
-			 total +=(double) (exactedDays * 20000)+ doseXcost;
+				total =(exactedDays * 20000)+ doseXcost;
 			}
 		}
 		else if(typeOfPet.equals(DOG)){
 			if(weightPet >= 1.0 && 3.0 <= weightPet){
-				total += (double) (exactedDays * 15000)+ doseXcost;
+				total = (exactedDays * 15000)+ doseXcost;
 			}else if(weightPet >= 3.1 && 10.0 <= weightPet){
-				total += (double) (exactedDays* 17000)+ doseXcost;
+				total = (exactedDays* 17000)+ doseXcost;
 			}else if(weightPet >= 10.1 && 20.0 <= weightPet){
-				total += (double) (exactedDays * 20000)+ doseXcost;
+				total = (exactedDays * 20000)+ doseXcost;
 			}else if(weightPet > 20.0 ){
-			 total +=(double) (exactedDays * 25000)+ doseXcost;
+				total = (exactedDays * 25000)+ doseXcost;
 			}
 		}
 		else if(typeOfPet.equals(BIRD)){
 			if(weightPet >= 1.0 && 3.0 <= weightPet){
-				total += (double) (exactedDays * 10000)+ doseXcost;
+				total = (exactedDays * 10000)+ doseXcost;
 			}else if(weightPet >= 3.1 && 10.0 <= weightPet){
-				total += (double) (exactedDays* 12000)+ doseXcost;
+				total = (exactedDays* 12000)+ doseXcost;
 			}else if(weightPet >= 10.1 && 20.0 <= weightPet){
-				total += (double) (exactedDays * 20000)+ doseXcost;
+				total = (exactedDays * 20000)+ doseXcost;
 			}else if(weightPet > 20.0 ){
-			 total +=(double) (exactedDays * 25000)+ doseXcost;
+				total = (exactedDays * 25000)+ doseXcost;
 			}
 		}
 		else if(typeOfPet.equals(OTHER)){
 			if(weightPet >= 1.0 && 3.0 <= weightPet){
-				total += (double) (exactedDays * 10000)+ doseXcost;
+				total = (exactedDays * 10000)+ doseXcost;
 			}else if(weightPet >= 3.1 && 10.0 <= weightPet){
-				total += (double) (exactedDays* 17000)+ doseXcost;
+				total = (exactedDays* 17000)+ doseXcost;
 			}else if(weightPet >= 10.1 && 20.0 <= weightPet){
-				total += (double) (exactedDays * 30000)+ doseXcost;
+				total = (exactedDays * 30000)+ doseXcost;
 			}else if(weightPet > 20.0 ){
-			 total +=(double) (exactedDays * 30000)+ doseXcost;
+				total = (exactedDays * 30000)+ doseXcost;
 			}
 		}
 		return total;

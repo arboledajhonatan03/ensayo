@@ -33,10 +33,10 @@ public class HistorialDate {
 		int passedDays = 0;
 		int exactedDays = 0;
 
-		day1 += (actualMonth - month)*30;
-		actualDay1 += (actualDay - day);
-		passedDays += (actualYear - year)*360;
-		exactedDays += (day1 + actualDay1 + passedDays);
+		day1 = (actualMonth - month)*30;
+		actualDay1 = actualDay - day;
+		passedDays = (actualYear - year)*360;
+		exactedDays = day1 + actualDay1 + passedDays;
 
 		return exactedDays;
 	}

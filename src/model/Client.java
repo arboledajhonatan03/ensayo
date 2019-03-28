@@ -70,15 +70,23 @@ public class Client{
 		}
 		return total;
 	}
-	public Pet findPet(String petName1){
+	public Pet findPet(String namePet1){
 		Pet pety = null;
 		boolean found = false;
 		for(int j = 0; j<pets.size() && !found; j++){
-			if(pets.get(j).getNamePet().equals(petName1)){
+			if(pets.get(j).getNamePet().equals(namePet1)){
 				pety = pets.get(j);
 				found = true;
 			}
 		}
 		return pety;
+	}
+	public String petNames(){
+		String msg = "";
+		int pos = 1;
+		for(int j=0;j<pets.size();j++){
+			msg += pos+". "+pets.get(j).getNamePet()+"\n";
+		}
+		return msg;
 	}
 }

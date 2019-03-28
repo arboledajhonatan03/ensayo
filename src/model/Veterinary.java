@@ -42,6 +42,19 @@ public class Veterinary{
 		}
 		return msg;
 	}
+	public String petNames(String id2){
+		String msg = "";
+		boolean foundClient = false;
+		if(findCustomer(id2)){
+			for(int j=0;j<clients.size() && !foundClient;j++){
+				if(id2.equals(clients.get(j).getIdentify())){
+					msg = clients.get(j).petNames();
+					foundClient = true;
+				}
+			}
+		}
+		return msg;
+	}
 	public boolean searchClient(String id1){
 		boolean listo = false;
 		for(int j=0;j<clients.size() && !listo;j++){
@@ -72,7 +85,7 @@ public class Veterinary{
 		String msj = "";
 		Pet pety = null;
 		for(int i =0; i<clients.size() && pety==null; i++){
-			if(idClient == clients.get(i).getIdentify()){
+			if(idClient.equals(clients.get(i).getIdentify())){
 				pety = clients.get(i).findPet(namePet1);
 				if(pety==null){
 					msj = "Este cliente no tiene ninguna mascota con ese nombre.";
@@ -80,9 +93,9 @@ public class Veterinary{
 				else{
 					boolean way = false;
 					for(int j = 0; j < rooms.length && !way; j++){
-					  if(rooms[i].getAvailable()){
+						if(rooms[i].getAvailable()){
 							if(rooms[i].getPet().getNamePet().equals(namePet1)){
-								rooms[i].getPet().setHistory(null);
+								rooms[i].setPet(null);
 								way= true;
 								rooms[i].setAvailable(true);
 								msj = "Ya no está hospitalizado el animal.";
@@ -99,5 +112,36 @@ public class Veterinary{
 			}
 		}
 		return msj;
+	}
+	public Client hallarCliente(String id2){
+		Client client1 = null;
+		boolean stop = false;
+		if(findCustomer(id2)){
+			for(int j=0;j<clients.size() && !stop;j++){
+				if(id2.equals(clients.get(j).getIdentify())){
+					client1 = clients.get(j);
+					stop = true;
+				}
+			}
+		}
+		return client1;
+	}
+	public void petHospitalize (ClinicalHistory newClinic){
+		boolean available = false;
+		for(int j=0;j<rooms.length && !available;j++){
+			if(rooms[j].getAvailable()){
+				rooms[j].setAvailable(false);
+				available = true;
+			}
+		}
+	}
+	public boolean findCustomer(String id2){
+		boolean foundClient = false;
+		for(int j=0;j<clients.size() && foundClient;j++){
+			if(id2.equals(clients.get(j).getIdentify())){
+				foundClient = true;
+			}
+		}
+		return foundClient;
 	}
 }

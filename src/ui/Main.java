@@ -76,29 +76,79 @@ public class Main{
 				System.out.println("The new client has been registered successfully.");
 			}
 			else if(userInput==2){
-				
+				int error = 0;
+				while (error == 0){
+					System.out.println("owner's identifier:");
+					String id2 = reader.nextLine();
+					if(veti.findCustomer(id2)){
+						System.out.println("¿What pet do you want to hospitalize?");
+						System.out.println(veti.petNames(id2));
+						int option = reader.nextInt();
+						System.out.println("¿What are the symptoms?");
+						String symptoms = reader.nextLine();
+						System.out.println("¿What is the diagnostic?");
+						String diagnostic = reader.nextLine();
+						Pet petHos = veti.hallarCliente(id2).getPets().get(option-1);
+						System.out.println("Day to join:");
+						int tDay = reader.nextInt();
+						reader.nextLine();
+						System.out.println("Month to join:");
+						int tMonth = reader.nextInt();
+						reader.nextLine();
+						System.out.println("Year to join:");
+						int tYear = reader.nextInt();
+						reader.nextLine();
+						HistorialDate today = new HistorialDate(tDay, tMonth, tYear);
+						ClinicalHistory newClinic = new ClinicalHistory(symptoms, diagnostic, true, today,  null);
+						System.out.println("¿How many medicines has the pet?");
+						int quantityMedicines = reader.nextInt();
+						reader.nextLine();
+						for(int i = 0; i < quantityMedicines; i++){
+							System.out.println("");
+							System.out.println("What is the name of the medicine?");
+							String nameMedicine = reader.nextLine();
+							System.out.println("How many doses has the medicine?");
+							double quantityDoses = reader.nextDouble();
+							reader.nextLine();
+							System.out.println("What is the price for dose?");
+							double valorDose = reader.nextDouble();
+							reader.nextLine();
+							System.out.println("What is the frequency to take the medicine?");
+							double frequency = reader.nextDouble();
+							reader.nextLine();
+							Medicament temporal = new Medicament(nameMedicine, quantityDoses, valorDose, frequency);
+							newClinic.addMedicine(temporal);
+						}
+						veti.petHospitalize(newClinic);
+						System.out.println("The pet was hospitalized successfully");
+						error = 1;
+					}
+					else{
+						System.out.println("The client wasn't finded, please enter the identifier again");
+					}
+				}
 			}
-			else if(userInput==3){
-				System.out.println(veti.showClients());
-				System.out.println("Type the client's ID for show him pets.");
-				String idClient = reader.nextLine();
-				System.out.println("Enter the pet's name to high.");
-				String namePet1 = reader.nextLine();
-				System.out.println(veti.findToHospitalize(idClient,namePet1));
-			}
-			else if(userInput==4){
-				System.out.println("Type the current day");
-				int actualDay = reader.nextInt();
-				reader.nextLine();
-				System.out.println("Type the current month.");
-				int actualMonth = reader.nextInt();
-				reader.nextLine();
-				System.out.println("Type the current year");
-				int actualYear = reader.nextInt();
-				reader.nextLine();
-				veti.totalIncomes(actualDay, actualMonth, actualYear);
-				System.out.println("Los ingresos totales son: "+veti.totalIncomes(actualDay, actualMonth, actualYear));
-			}
+				else if(userInput==3){
+					System.out.println(veti.showClients());
+					System.out.println("Type the client's ID for show him pets.");
+					String idClient = reader.nextLine();
+					System.out.println("Enter the pet's name to high.");
+					String namePet1 = reader.nextLine();
+					System.out.println(veti.findToHospitalize(idClient,namePet1));
+				}
+				else if(userInput==4){
+					System.out.println("Type the current day");
+					int actualDay = reader.nextInt();
+					reader.nextLine();
+					System.out.println("Type the current month.");
+					int actualMonth = reader.nextInt();
+					reader.nextLine();
+					System.out.println("Type the current year");
+					int actualYear = reader.nextInt();
+					reader.nextLine();
+					veti.totalIncomes(actualDay, actualMonth, actualYear);
+					System.out.println("Los ingresos totales son: "+veti.totalIncomes(actualDay, actualMonth, actualYear));
+				}
 			else if(userInput==5){
 				System.out.println(veti.showClients());
 			}
@@ -154,7 +204,6 @@ public class Main{
 		veti.getHistorial().add(history2);
         veti.getHistorial().add(history3);
 		veti.getClients().add(client1);
-		veti.getClients().add(client2);
 		veti.getClients().add(client2);
 
 

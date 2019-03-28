@@ -26,5 +26,4 @@ public class Room{
 	public void setPet(Pet pet){
 		this.pet = pet;
 	}
-	
 }
